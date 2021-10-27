@@ -65,24 +65,35 @@ with the url to your registry. The URL you enter should match the `REGISTRY_SERV
 
 <img src="images/store-image-on-server.png" alt="Screenshot of the Tanzu Java Web App within Application Accelerator. It includes empty fields for new project information, and buttons labeled 'Generate Project', 'Explore Files', and 'Cancel'." width="600">
 
-**4. Click the “Generate Project” button** to download the accelerator zip file (you’ll use this accelerator code in the [Iterate on your Application](#iterate) section below).
+**4. Update the "Project Name"** to something that is unique like "my-first-java-app." This is optional, but "my-first-java-app" will be used in the following instructions.
 
-**5. Deploy the ‘Tanzu Java Web App’ accelerator using the `create` command**
+**5. Click the “Generate Project” button** to download the accelerator zip file (you’ll use this generated accelerator code in the [Iterate on your Application](#iterate) section below).
+
+**6. Deploy the ‘Tanzu Java Web App’ accelerator using the `create` command**
 ```
-tanzu apps workload create tanzu-java-web-app \
+tanzu apps workload create my-first-java-app \
 --git-repo https://github.com/sample-accelerators/tanzu-java-web-app \
 --git-branch main --type web --yes
 ```
-**Note** this first deploy uses accelerator source from git, but you’ll use the VScode extension to debug and live-update this app in later steps.
+_Where:_
+`--git-repo` is the URL to the github repo where the application code to be deployed is located
+`--git-branch` is the specific branch of that repo to be deployed
+`--type` is the type of workload to be deployed
+`--yes` specifies automatic agreement to all prompts
 
-**6. View the build and runtime logs** for your app using the `tail` command:
-```
-tanzu apps workload tail tanzu-java-web-app --since 10m --timestamp
-```
+**Note** this first deploy uses the accelerator source directly from git rather than the project code you just generated. You’ll use the VScode extension to debug and live-update the generated project code in the "Iterate on your Applicationm" section below.
 
-**7. Once the workload has been built and is running** you can grab the web-app URL via the `get` command:
+**7. View the build and runtime logs** for your app using the `tail` command:
 ```
-tanzu apps workload get tanzu-java-web-app
+tanzu apps workload tail my-first-java-app --since 10m --timestamp
+```
+_Where:_
+`--since` is the amount of time prior to the current moment from which to retrieve logs
+`--timestamp` specifies the addition of timestamps to each log entry
+
+**8. Once the workload has been built and is running** you can grab the web-app URL via the `get` command:
+```
+tanzu apps workload get my-first-java-app
 ```
 <cntrl>-click the `Workload Knative Services URL` at the bottom of the command output.
 
@@ -92,7 +103,7 @@ tanzu apps workload get tanzu-java-web-app
 ##### Set up your IDE
 
 Now that you have a skeleton workload working, you are ready to iterate on your application
-and test code changes on the cluster.
+and test your code changes on the cluster.
 Tanzu Developer Tools for VSCode, VMware Tanzu’s official IDE extension for VSCode,
 helps you develop & receive fast feedback on the Tanzu Application Platform.
 
@@ -110,7 +121,7 @@ In order to ensure your extension helps you iterate on the correct project, you�
 
 2. In the “Local Path” field, enter the path to the directory containing the ‘Tanzu Java Web App’
 
-3. In the “Source Image” field, enter the destination image repository where you’d like to publish an image containing your workload’s source code. For example “harbor.vmware.com/myteam/tanzu-java-web-app-source”
+3. In the “Source Image” field, enter the destination image repository where you’d like to publish an image containing your workload’s source code. For example “harbor.vmware.com/myteam/my-first-java-app-source”
 
 You’re now ready to iterate on your application!
 
