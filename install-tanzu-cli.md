@@ -133,16 +133,16 @@ the CLI core and plug-ins are installed by running:
    - **For Linux:**
 
      ```console
-     cd $HOME/tanzu \n
-     export VERSION=v0.11.6 \n
+     cd $HOME/tanzu
+     export VERSION=v0.11.6
      sudo install cli/core/$VERSION/tanzu-core-linux_amd64 /usr/local/bin/tanzu
      ```
 
    - **For macOS:**
 
      ```console
-     cd $HOME/tanzu \n
-     export VERSION=v0.11.6 \n
+     cd $HOME/tanzu
+     export VERSION=v0.11.6
      install cli/core/$VERSION/tanzu-core-darwin_amd64 /usr/local/bin/tanzu
      ```
 
