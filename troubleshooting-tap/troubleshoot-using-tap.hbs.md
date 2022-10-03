@@ -443,6 +443,8 @@ For more information, see [aws/aws-cli/issues/6920](https://github.com/aws/aws-c
 GitHub.
 
 **Solution**
+AWS CLI v2.7.35 or greater is supported.
+Updating the AWS CLI to that version or greater will resolve this issue.
 
 1. Update `aws-cli` to the latest version.
 1. Run:
